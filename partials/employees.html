@@ -1,0 +1,31 @@
+<div>
+    <h1>{{'employeesList' | translate}}</h1>
+    <div class="form-group col-md-2">
+        <input class="form-control" ng-model="myFilter" placeholder="{{'filter' | translate}} ..." />
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{'name' | translate}}</th>
+                <th>{{'hireDate' | translate}}</th>
+                <th>{{'job' | translate}}</th>
+                <th>{{'salary' | translate}}</th>
+                <th>{{'update' | translate}}</th>
+                <th>{{'delete' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in employeesCtrl.employees | filter:myFilter">
+                <td>{{employee.employee_id}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.hiredate}}</td>
+                <td>{{employee.job.jobname}}</td>
+                <td>{{employee.salary}}</td>
+                <td><a class="btn btn-primary" href="#/updateEmployee/{{employee.employee_id}}">{{'update' | translate}}</a></td>
+                <td><a class="btn btn-primary" confirmed-click="employeesCtrl.deleteEmployee(employee.employee_id)" ng-confirm-box-click="{{'confirm' | translate}}">{{'delete' | translate}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
